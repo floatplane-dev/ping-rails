@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Make the API future proof by versioning v1
   namespace :v1 do
-    # 
+    resources :users
   end
 
   # Return app meta info for health check.
