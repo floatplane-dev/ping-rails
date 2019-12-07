@@ -6,15 +6,20 @@ module V1
     class UserIntegrationTest < ActionDispatch::IntegrationTest
       def setup
         @headers = { 'Content-Type': 'application/vnd.api+json' }
+        @uuid = users(:user_1).id
       end
 
-      test 'can get user' do
-        uuid = users(:user_1).id
-        get "/v1/public/users/#{uuid}", headers: @headers
+      test 'can show user' do
+        get "/v1/public/users/#{@uuid}", headers: @headers
         assert_response 200
         json = JSON.parse(@response.body)
         assert_equal ':icecream:', json['data']['attributes']['emoji']
         assert_equal '/images/icecream.png', json['data']['attributes']['image']
+      end
+
+      test 'index user is forbidden' do
+        get "/v1/public/users/", headers: @headers
+        assert_response 403
       end
 
       test 'can create user' do
@@ -32,6 +37,25 @@ module V1
         body = JSON.parse(response.body)
         refute_nil body['data']['id']
         assert_equal 'user', body['data']['type']
+      end
+
+      test 'can put user' do
+        @params = {
+          data: {
+            type: 'user',
+            attributes: {
+              emoji: 'panda',
+              image: '/images/panda.png'
+            }
+          }
+        }
+        put "/v1/public/users/#{@uuid}", params: @params, headers: @headers, as: :json
+        assert_response 200
+      end
+
+      test 'delete user is forbidden' do
+        delete "/v1/public/users/#{@uuid}", headers: @headers
+        assert_response 403
       end
     end
   end

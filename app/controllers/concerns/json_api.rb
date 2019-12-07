@@ -335,7 +335,7 @@ module JsonApi
 
     if resource.update!(attributes_and_relationships)
       json = serializer_klass.new(resource).serialized_json
-      render status: 204, json: json
+      render status: 200, json: json
     else
       render status: 422, json: json_errors(resource)
     end
