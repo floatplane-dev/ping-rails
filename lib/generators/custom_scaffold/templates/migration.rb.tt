@@ -1,0 +1,18 @@
+class Create<%= @name.classify.pluralize %> < ActiveRecord::Migration[5.1]
+  def change
+    create_table :<%= @name.downcase.pluralize %>, id: :uuid do |t|
+      # t.string :slug
+      # t.string :name
+      # t.boolean :public, default: false
+
+      # t.uuid :group_id
+
+      # t.timestamps
+    end
+
+    # add_index :<%= @name.downcase.pluralize %>, :slug, unique: true
+    # add_index :<%= @name.downcase.pluralize %>, :name, unique: true
+    # add_index :<%= @name.downcase.pluralize %>, :public
+    # add_index :<%= @name.downcase.pluralize %>, :group_id
+  end
+end

@@ -1,41 +1,57 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Which version of Ruby to use (keep in sync with .ruby-version)
 ruby '2.6.5'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
-# Use Puma as the app server
-gem 'puma', '~> 4.1'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# Ruby on Rails framework
+gem 'rails', '~> 5.1.6'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# Puma app server
+gem 'puma', '~> 3.7'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+# Postgress database
+gem 'pg'
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+# For handling Cross-Origin Resource Sharing (CORS)
+gem 'rack-cors', require: 'rack/cors'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
+# For loading in environment variables
+gem 'dotenv-rails'
+
+# For converting all incoming JSON to snake_case and outgoing JSON to dashes
+gem 'olive_branch'
+
+# For JSON API compliant serialisers
+gem 'fast_jsonapi'
+
+# For token based authentication, specifically Json Web Token (JWT)
+gem 'jwt'
+
+# For enabling ActiveModel has_secure_password, effectively hiding user passwords from the database
+gem 'bcrypt', '~> 3.1.7'
+
+# For coloured printing in byebug and console `ap`
+gem 'awesome_print'
+
+# For halting the code and debugging `byebug`
+gem 'byebug', '~> 10.0', groups: %i[development test]
+
+# For seeding the database with modular control and dependencies
+gem 'seedbank'
+
+# For dumping database data into a YAML file (great for maintenance backups)
+gem 'yaml_db'
 
 group :development do
+  # For listening to file changes
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # For Ruby syntax formatting
+  gem 'rubocop', require: false
+
+  # For annotating models with schemas
+  gem 'annotate', require: false
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# https://www.skylight.io/
+# gem "skylight"

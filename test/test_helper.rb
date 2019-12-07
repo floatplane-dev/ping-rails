@@ -1,13 +1,29 @@
 ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
+require File.expand_path('../config/environment', __dir__)
 require 'rails/test_help'
 
-class ActiveSupport::TestCase
-  # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+module ActiveSupport
+  class TestCase
+    # Make all fixtures available to every test
+    fixtures :all
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+    # Generate a valid JWT token for an admin user
+    # def admin_user_token
+    #   JsonWebToken.encode(user_id: users('admin_user').id)
+    # end
 
-  # Add more helper methods to be used by all tests here...
+    # Return the HTTP headers a logged in admin would be sending
+    # def admin_header
+    #   {
+    #     'Authorization': admin_user_token,
+    #     'Content-Type': "application/vnd.api+json"
+    #   }
+    # end
+
+    def public_header
+      {
+        'Content-Type': 'application/vnd.api+json'
+      }
+    end
+  end
 end

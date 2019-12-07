@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # Make the API future proof by versioning v1
+  namespace :v1 do
+    # 
+  end
+
+  # Return app meta info for health check.
+  get 'sanity-check', to: 'sanity#check'
+
+  # Return a 404 for all other routes.
+  match '*catch', to: 'application#render_404', via: :all
 end

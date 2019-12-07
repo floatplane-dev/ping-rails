@@ -1,0 +1,9 @@
+# require 'test_helper'
+# 
+# module <%= @version.classify %>
+#   module <%= @scope.classify %>
+#     class <%= @name.classify.singularize %>IntegrationTest < ApplicationController
+# 
+#     end
+#   end
+# end
