@@ -22,20 +22,20 @@ threads 0, 5
 
 # Where to store the Puma socket.
 # This is the socekt Nginx will forward requests to and expects responses from.
-bind 'unix:///var/www/ping-rails/sockets/puma.sock'
+bind 'unix:///var/www/api.ping.floatplane.dev/sockets/puma.sock'
 
 # Where to store the Puma control socket.
 # This socket allows us to interact with Puma (start, stop, status, ...)
-activate_control_app 'unix:///var/www/ping-rails/sockets/pumactl.sock', auth_token: '12345'
+activate_control_app 'unix:///var/www/api.ping.floatplane.dev/sockets/pumactl.sock', auth_token: '12345'
 
 # Where to store Pumag pid, state and logs.
-pidfile '/var/www/ping-rails/pids/puma.pid'
-state_path '/var/www/ping-rails/pids/puma.state'
-stdout_redirect '/var/www/ping-rails/logs/puma.stdout.log', '/var/www/ping-rails/logs/puma.stderr.log', true
+pidfile '/var/www/api.ping.floatplane.dev/pids/puma.pid'
+state_path '/var/www/api.ping.floatplane.dev/pids/puma.state'
+stdout_redirect '/var/www/api.ping.floatplane.dev/logs/puma.stdout.log', '/var/www/api.ping.floatplane.dev/logs/puma.stderr.log', true
 
 # Which Rails build to serve.
 # Note that this is a symlinked folder pointing at the latest build.
-directory '/var/www/ping-rails/builds/production/latest'
+directory '/var/www/api.ping.floatplane.dev/builds/production/latest'
 
 # Verifies that all workers have checked in to the master process within the
 # given timeout. If not the worker process will be restarted. This is not a
