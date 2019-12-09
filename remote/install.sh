@@ -71,11 +71,11 @@ and env RAILS_ENV=production bin/rails db:migrate
 # and env RAILS_ENV=production bin/rails db:seed
 
 and echo ----------
-and echo set head (git --git-dir=/var/www/ping-rails/repo rev-parse --short HEAD)
-and set head (git --git-dir=/var/www/ping-rails/repo rev-parse --short HEAD)
+and echo set head (git --git-dir=/var/www/api.ping.floatplane.dev/repo rev-parse --short HEAD)
+and set head (git --git-dir=/var/www/api.ping.floatplane.dev/repo rev-parse --short HEAD)
 and echo ----------
-and echo ln -nsf /var/www/ping-rails/builds/$branch/$head /var/www/ping-rails/builds/$branch/latest
-and ln -nsf /var/www/ping-rails/builds/$branch/$head /var/www/ping-rails/builds/$branch/latest
+and echo ln -nsf /var/www/api.ping.floatplane.dev/builds/$branch/$head /var/www/api.ping.floatplane.dev/builds/$branch/latest
+and ln -nsf /var/www/api.ping.floatplane.dev/builds/$branch/$head /var/www/api.ping.floatplane.dev/builds/$branch/latest
 and echo ----------
 # Note, avoid `phased-restart` and `restart` for they have issues
 and echo bin/pumactl -F config/puma/production.rb -T '12345' stop
@@ -84,8 +84,8 @@ and echo bin/pumactl -F config/puma/production.rb -T '12345' start
 and bin/pumactl -F config/puma/production.rb -T '12345' start
 and echo ----------
 and echo Sanity check on remote:
-and echo curl --unix-socket /var/www/ping-rails/sockets/puma.sock http://localhost/sanity-check -H "Content-Type: application/vnd.api+json"
-and curl --unix-socket /var/www/ping-rails/sockets/puma.sock http://localhost/sanity-check -H "Content-Type: application/vnd.api+json"
+and echo curl --unix-socket /var/www/api.ping.floatplane.dev/sockets/puma.sock http://localhost/sanity-check -H "Content-Type: application/vnd.api+json"
+and curl --unix-socket /var/www/api.ping.floatplane.dev/sockets/puma.sock http://localhost/sanity-check -H "Content-Type: application/vnd.api+json"
 and echo The responsonse above should be status:200 and revision:$revision.
 and echo ----------
 and echo Removing all builds except the latest one
