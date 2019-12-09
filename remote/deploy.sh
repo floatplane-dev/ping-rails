@@ -1,7 +1,7 @@
 #!/usr/local/bin/fish
 
 set remote "rv@server.floatplane.dev"
-set path "/var/www/ping-rails"
+set path "/var/www/api.ping.floatplane.dev"
 
 set branch (git rev-parse --abbrev-ref HEAD)
 set revision (git rev-parse --short HEAD)
