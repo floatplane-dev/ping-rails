@@ -2,7 +2,9 @@ module V1
   module Public
     class UserSerializer < ApplicationSerializer
       attributes :emoji,
-                 :image
+                 :image,
+                 :latitude,
+                 :longitude
 
       # belongs_to :thing
       # belongs_to :main_group, record_type: :product_group, serializer: :product_group

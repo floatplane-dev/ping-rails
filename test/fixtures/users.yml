@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :uuid             not null, primary key
+#  emoji      :text
+#  image      :text
+#  latitude   :float
+#  longitude  :float
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 user_1:
   emoji: ":icecream:"
   image: /images/icecream.png
