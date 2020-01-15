@@ -35,6 +35,8 @@ module V1
         %i[
           image
           emoji
+          latitude
+          longitude
         ]
         # %i[
         #   name
