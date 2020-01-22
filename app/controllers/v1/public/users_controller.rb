@@ -2,7 +2,10 @@ module V1
   module Public
     class UsersController < ApplicationController
       def index
-        forbidden
+        allow_index
+        # TODO: only fetch those user updated latlong last X seconds
+        # TODO: only fetch users within radius of current user
+        # TODO: only fetch users matching the queried emoji
       end
 
       def show
