@@ -4,7 +4,8 @@ module V1
       attributes :emoji,
                  :image,
                  :latitude,
-                 :longitude
+                 :longitude,
+                 :share_geo
 
       # belongs_to :thing
       # belongs_to :main_group, record_type: :product_group, serializer: :product_group

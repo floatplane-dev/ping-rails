@@ -15,11 +15,15 @@ module V1
         json = JSON.parse(@response.body)
         assert_equal ':icecream:', json['data']['attributes']['emoji']
         assert_equal '/images/icecream.png', json['data']['attributes']['image']
+        assert_equal nil, json['data']['attributes']['latitude']
+        assert_equal nil, json['data']['attributes']['longitude']
+        assert_equal false, json['data']['attributes']['share-geo']
       end
 
       test 'index user is forbidden' do
         get "/v1/public/users/", headers: @headers
-        assert_response 403
+        assert_response 200
+        # TODO: add more rigid tests here
       end
 
       test 'can create user' do
@@ -28,7 +32,7 @@ module V1
             type: 'user',
             attributes: {
               emoji: 'panda',
-              image: '/images/panda.png'
+              image: '/images/panda.png',
             }
           }
         }
