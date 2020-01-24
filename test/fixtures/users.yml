@@ -14,7 +14,9 @@
 user_1:
   emoji: ":icecream:"
   image: /images/icecream.png
+  share_geo: false
 
 user_2:
   emoji: ":sandwich:"
   image: /images/sandwich.png
+  share_geo: true

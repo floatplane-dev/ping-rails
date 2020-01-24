@@ -15,8 +15,8 @@ module V1
         json = JSON.parse(@response.body)
         assert_equal ':icecream:', json['data']['attributes']['emoji']
         assert_equal '/images/icecream.png', json['data']['attributes']['image']
-        assert_equal nil, json['data']['attributes']['latitude']
-        assert_equal nil, json['data']['attributes']['longitude']
+        assert_nil json['data']['attributes']['latitude']
+        assert_nil json['data']['attributes']['longitude']
         assert_equal false, json['data']['attributes']['share-geo']
       end
 
@@ -43,18 +43,21 @@ module V1
         assert_equal 'user', body['data']['type']
       end
 
-      test 'can put user' do
+      test 'can update user' do
         @params = {
           data: {
             type: 'user',
             attributes: {
               emoji: 'panda',
-              image: '/images/panda.png'
+              image: '/images/panda.png',
+              share_geo: true
             }
           }
         }
         put "/v1/public/users/#{@uuid}", params: @params, headers: @headers, as: :json
         assert_response 200
+        body = JSON.parse(response.body)
+        assert_equal true, body['data']['attributes']['share-geo']
       end
 
       test 'delete user is forbidden' do

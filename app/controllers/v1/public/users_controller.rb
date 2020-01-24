@@ -40,6 +40,7 @@ module V1
           emoji
           latitude
           longitude
+          share_geo
         ]
         # %i[
         #   name
